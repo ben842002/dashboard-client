@@ -24,9 +24,20 @@ import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
 import { ColorModeContextProvider } from "contexts";
 import { Title, Sider, Layout, Header } from "components/layout";
-import { Login } from "pages/login";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
+
+import { 
+  Login, 
+  Home, 
+  Agents, 
+  MyProfile, 
+  PropertyDetails,
+  AllProperties,
+  CreateProperty,
+  AgentProfile,
+  EditProperty,
+} from "pages";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -126,11 +137,10 @@ function App() {
               icon: <ChatBubbleOutline />,
             },
             {
-              name: "my-profile",
-              options: { label: "My Profile" },
-              list: MuiInferencer,
-              icon: <AccountCircleOutlined />,
-            }
+                name: "my-profile",
+                list: MuiInferencer,
+                icon: <AccountCircleOutlined />,
+            },
           ]}
           Title={Title}
           Sider={Sider}
@@ -139,6 +149,7 @@ function App() {
           routerProvider={routerProvider}
           authProvider={authProvider}
           LoginPage={Login}
+          DashboardPage={Home}
         />
       </RefineSnackbarProvider>
     </ColorModeContextProvider>
